@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		C76F01D22AE80A5C008045E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F01D12AE80A5C008045E9 /* AppDelegate.swift */; };
 		C76F01D42AE80A5C008045E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F01D32AE80A5C008045E9 /* SceneDelegate.swift */; };
-		C76F01D62AE80A5C008045E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F01D52AE80A5C008045E9 /* ViewController.swift */; };
 		C76F01D92AE80A5C008045E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76F01D72AE80A5C008045E9 /* Main.storyboard */; };
 		C76F01DB2AE80A60008045E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C76F01DA2AE80A60008045E9 /* Assets.xcassets */; };
 		C76F01DE2AE80A60008045E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76F01DC2AE80A60008045E9 /* LaunchScreen.storyboard */; };
 		C76F01E92AE80A60008045E9 /* TwitterSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F01E82AE80A60008045E9 /* TwitterSampleTests.swift */; };
 		C76F01F32AE80A60008045E9 /* TwitterSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F01F22AE80A60008045E9 /* TwitterSampleUITests.swift */; };
 		C76F01F52AE80A61008045E9 /* TwitterSampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F01F42AE80A61008045E9 /* TwitterSampleUITestsLaunchTests.swift */; };
+		C76F02042AE8BC50008045E9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F02032AE8BC50008045E9 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,6 @@
 		C76F01CE2AE80A5C008045E9 /* TwitterSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76F01D12AE80A5C008045E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C76F01D32AE80A5C008045E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C76F01D52AE80A5C008045E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C76F01D82AE80A5C008045E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C76F01DA2AE80A60008045E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C76F01DD2AE80A60008045E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		C76F01EE2AE80A60008045E9 /* TwitterSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76F01F22AE80A60008045E9 /* TwitterSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterSampleUITests.swift; sourceTree = "<group>"; };
 		C76F01F42AE80A61008045E9 /* TwitterSampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterSampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C76F02032AE8BC50008045E9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 			children = (
 				C76F01D12AE80A5C008045E9 /* AppDelegate.swift */,
 				C76F01D32AE80A5C008045E9 /* SceneDelegate.swift */,
-				C76F01D52AE80A5C008045E9 /* ViewController.swift */,
+				C76F02032AE8BC50008045E9 /* HomeViewController.swift */,
 				C76F01D72AE80A5C008045E9 /* Main.storyboard */,
 				C76F01DA2AE80A60008045E9 /* Assets.xcassets */,
 				C76F01DC2AE80A60008045E9 /* LaunchScreen.storyboard */,
@@ -258,9 +258,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C76F01D62AE80A5C008045E9 /* ViewController.swift in Sources */,
 				C76F01D22AE80A5C008045E9 /* AppDelegate.swift in Sources */,
 				C76F01D42AE80A5C008045E9 /* SceneDelegate.swift in Sources */,
+				C76F02042AE8BC50008045E9 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
