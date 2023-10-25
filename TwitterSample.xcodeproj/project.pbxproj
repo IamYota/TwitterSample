@@ -16,6 +16,7 @@
 		C76F01F32AE80A60008045E9 /* TwitterSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F01F22AE80A60008045E9 /* TwitterSampleUITests.swift */; };
 		C76F01F52AE80A61008045E9 /* TwitterSampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F01F42AE80A61008045E9 /* TwitterSampleUITestsLaunchTests.swift */; };
 		C76F02042AE8BC50008045E9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F02032AE8BC50008045E9 /* HomeViewController.swift */; };
+		C76F02062AE8D226008045E9 /* TweetDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F02052AE8D226008045E9 /* TweetDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		C76F01F22AE80A60008045E9 /* TwitterSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterSampleUITests.swift; sourceTree = "<group>"; };
 		C76F01F42AE80A61008045E9 /* TwitterSampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterSampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C76F02032AE8BC50008045E9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C76F02052AE8D226008045E9 /* TweetDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				C76F01DA2AE80A60008045E9 /* Assets.xcassets */,
 				C76F01DC2AE80A60008045E9 /* LaunchScreen.storyboard */,
 				C76F01DF2AE80A60008045E9 /* Info.plist */,
+				C76F02052AE8D226008045E9 /* TweetDataModel.swift */,
 			);
 			path = TwitterSample;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				C76F01D22AE80A5C008045E9 /* AppDelegate.swift in Sources */,
 				C76F01D42AE80A5C008045E9 /* SceneDelegate.swift in Sources */,
 				C76F02042AE8BC50008045E9 /* HomeViewController.swift in Sources */,
+				C76F02062AE8D226008045E9 /* TweetDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
