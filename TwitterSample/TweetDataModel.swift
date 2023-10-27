@@ -9,6 +9,6 @@ import Foundation
 
 struct TweetDataModel {
     var userName: String
-    var text: String
+    var tweetText: String
     var recordDate: Date
 }
