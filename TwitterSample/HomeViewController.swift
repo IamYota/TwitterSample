@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import RealmSwift
 
 class HomeViewController: UIViewController {
     
@@ -22,11 +23,17 @@ class HomeViewController: UIViewController {
         
     }
     
+    //画面が表示されるたびにデータの更新が行われる
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setTweetData()
+        tableView.reloadData() //データを画面に反映させる
+    }
+    
     func setTweetData(){
-        for i in 1...5 {
-            let tweetDataModel = TweetDataModel(userName: "\(i)番目のユーザー", tweetText: "\(i)番目のツイートです", recordDate: Date())
-            tweetDataList.append(tweetDataModel)
-        }
+        let realm = try! Realm()
+        let result = realm.objects(TweetDataModel.self)
+        tweetDataList = Array(result)
     }
     
     @objc func tapAddButton() {
@@ -75,7 +82,7 @@ extension Date {
         if let hour = components.hour, hour >= 1 {
             return "\(hour)時間前"
         }
-        
+ 
         if let minute = components.minute, minute >= 1 {
             return "\(minute)分前"
         }
@@ -106,6 +113,16 @@ extension HomeViewController: TableViewCellDelegate {
             navigationController?.pushViewController(tweetDetailViewController, animated: true)
             print("\(indexPath.row)番を編集します")
         }
+    }
+    
+    func didTapDeleteButton(at indexPath: IndexPath) {
+        let targetTweet = tweetDataList[indexPath.row]
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(targetTweet)
+        }
+        tweetDataList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }
 

@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 class TweetDetailViewController : UIViewController {
     
@@ -6,28 +7,27 @@ class TweetDetailViewController : UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    var userName: String = ""
-    var tweetText: String = ""
-    var recordDate: Date = Date()
+    var tweetData = TweetDataModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         displayDetail()
         setDoneButton()
+        textView.delegate = self
     }
     
     //これでtweetDataを渡すあ
     func configure(tweet: TweetDataModel) {
-        userName = tweet.userName
-        tweetText = tweet.tweetText
-        recordDate = tweet.recordDate
-        print("\(userName)が\(tweetText)を\(recordDate)に投稿しました")
+        tweetData.userName = tweet.userName
+        tweetData.tweetText = tweet.tweetText
+        tweetData.recordDate = tweet.recordDate
     }
     
     func displayDetail(){
-        textView.text = tweetText
-        userNameLabel.text = userName
-        dateLabel.text = recordDate.timeAgoDisplay()
+        textView.text = tweetData.tweetText
+        userNameLabel.text = tweetData.userName
+        dateLabel.text = tweetData.recordDate.timeAgoDisplay()
     }
     
     @objc func tapDoneButton() {
@@ -39,5 +39,23 @@ class TweetDetailViewController : UIViewController {
         let commitButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(tapDoneButton))
         toolBar.items = [commitButton]
         textView.inputAccessoryView = toolBar
+    }
+    
+    //データを保存
+    func saveData(with tweetText: String){
+        let realm = try! Realm()
+        try! realm.write {
+            tweetData.tweetText = tweetText
+            tweetData.recordDate = Date()
+            realm.add(tweetData)
+        }
+        print("tweetText: \(tweetData.tweetText), recordDate: \(tweetData.recordDate)")
+    }
+}
+
+extension TweetDetailViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        let updatedText = textView.text ?? ""
+        saveData(with: updatedText)
     }
 }
