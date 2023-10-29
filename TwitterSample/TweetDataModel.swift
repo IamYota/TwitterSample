@@ -1,14 +1,11 @@
-//
-//  TweetDataModel.swift
-//  TwitterSample
-//
-//  Created by Yota Yamashita on 2023/10/25.
-//
-
 import Foundation
+import RealmSwift
 
-struct TweetDataModel {
-    var userName: String
-    var tweetText: String
-    var recordDate: Date
+class TweetDataModel: Object {
+    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var userName: String = ""
+    @objc dynamic var tweetText: String = ""
+    @objc dynamic var recordDate: Date = Date()
+    
+    
 }

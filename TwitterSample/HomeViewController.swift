@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import RealmSwift
 
 class HomeViewController: UIViewController {
     
@@ -18,22 +19,30 @@ class HomeViewController: UIViewController {
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         setTweetData()
         
+        //画面遷移時にBackボタンを非表示
+        navigationItem.hidesBackButton = true
         setNavigationBarButton()
-        
+    }
+    
+    //画面が表示されるたびにデータの更新が行われる
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //setTweetData()
+        tableView.reloadData() //データを画面に反映させる
     }
     
     func setTweetData(){
-        for i in 1...5 {
-            let tweetDataModel = TweetDataModel(userName: "\(i)番目のユーザー", tweetText: "\(i)番目のツイートです", recordDate: Date())
-            tweetDataList.append(tweetDataModel)
-        }
+        let realm = try! Realm()
+        let result = realm.objects(TweetDataModel.self)
+        tweetDataList = Array(result)
     }
-    
+    //投稿ページへの移動
     @objc func tapAddButton() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tweetDetailViewController = storyboard.instantiateViewController(identifier: "TweetDetailViewController") as! TweetDetailViewController
-        navigationController?.pushViewController(tweetDetailViewController, animated: true)
+        let tweetPostViewController = storyboard.instantiateViewController(identifier: "TweetPostViewController") as! TweetPostViewController
+        navigationController?.pushViewController(tweetPostViewController, animated: true)
     }
+    
     
     func setNavigationBarButton() {
         let buttonActionSelector: Selector = #selector(tapAddButton)
@@ -75,11 +84,10 @@ extension Date {
         if let hour = components.hour, hour >= 1 {
             return "\(hour)時間前"
         }
-        
+ 
         if let minute = components.minute, minute >= 1 {
             return "\(minute)分前"
         }
-        
         return "たった今"
     }
 }
@@ -89,7 +97,6 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyborad = UIStoryboard(name: "Main", bundle: nil)
         let tweetDetailViewController = storyborad.instantiateViewController(identifier: "TweetDetailViewController") as! TweetDetailViewController
-        //navigationController?.pushViewController(tweetDetailViewController, animated: true)
         let tweetData = tweetDataList[indexPath.row]
         tweetDetailViewController.configure(tweet: tweetData)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -106,6 +113,16 @@ extension HomeViewController: TableViewCellDelegate {
             navigationController?.pushViewController(tweetDetailViewController, animated: true)
             print("\(indexPath.row)番を編集します")
         }
+    }
+    
+    func didTapDeleteButton(at indexPath: IndexPath) {
+        let targetTweet = tweetDataList[indexPath.row]
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(targetTweet)
+        }
+        tweetDataList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }
 

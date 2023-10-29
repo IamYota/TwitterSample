@@ -2,6 +2,7 @@ import UIKit
 
 protocol TableViewCellDelegate: AnyObject {
     func didTapEditButton(at indexPth: IndexPath)
+    func didTapDeleteButton(at indexPath: IndexPath)
 }
 
 class TableViewCell: UITableViewCell {
@@ -18,6 +19,7 @@ class TableViewCell: UITableViewCell {
     }
     
     @IBAction func deleteButton(_ sender: Any) {
+        delegate?.didTapDeleteButton(at: indexPath)
     }
     
     override func awakeFromNib() {
