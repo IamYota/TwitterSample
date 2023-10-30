@@ -44,11 +44,12 @@ class TweetDetailViewController : UIViewController, UITextViewDelegate {
         editDoneButton.backgroundColor = UIColor.lightGray
     }
     
-    //これでtweetDataを渡す
+    //tweetDataを渡す
     func configure(tweet: TweetDataModel) {
-        tweetData.userName = tweet.userName
-        tweetData.tweetText = tweet.tweetText
-        tweetData.recordDate = tweet.recordDate
+//        tweetData.userName = tweet.userName.self
+//        tweetData.tweetText = tweet.tweetText.self
+//        tweetData.recordDate = tweet.recordDate.self
+        tweetData = tweet
     }
     
     func displayDetail(){
